@@ -1,11 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogo da Toupeira - Login</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <main>
+    <h1>
+        <img src="img/logo.png">
+    </h1>
+    <div class="container">
+      <form method="post">
+        <div class="campo">
+          <label for="usuario">&lt; Usuário &gt;</label>
+          <input type="text" id="usuario" name="usuario" required>
+        </div>
+ 
+        <div class="campo">
+          <label for="senha">&lt; Senha &gt;</label>
+          <input type="password" id="senha" name="senha" required>
+        </div>
+ 
+        <button type="submit">Entrar</button>
+      </form>
+ 
+      <p class="link-cadastro">
+        <a href="cadastro.html">Não possui cadastro ainda? Cadastre-se</a>
+      </p>
+    </div>
+  </main>
 </body>
 </html>
