@@ -1,0 +1,96 @@
+h1 {
+  margin: 0 0 -1px;
+}
+
+.barra-topo {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+}
+
+.usuario-menu {
+  position: relative;
+  width: 280px;
+}
+
+.usuario-menu summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.usuario-menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.usuario-menu summary::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-right: 3px solid currentColor;
+  border-bottom: 3px solid currentColor;
+  transform: rotate(45deg);
+  margin-top: -4px;
+}
+
+.usuario-menu[open] summary::after {
+  transform: rotate(-135deg);
+  margin-top: 4px;
+}
+
+.opcoes-perfil {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 3;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.opcoes-perfil a {
+  display: block;
+  padding: 10px;
+  font-size: 1.1rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+.opcoes-perfil a:link,
+.opcoes-perfil a:visited {
+  color: #4a2a0a;
+}
+
+.menu-principal {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 900px;
+  max-width: 90vw;
+}
+
+.botao {
+  display: block;
+  width: 80%;
+  margin: 0;
+  padding: 22px 24px;
+  font-size: 2rem;
+  text-align: center;
+  text-decoration: none;
+  align-self: center;
+}
+
+.botao:link,
+.botao:visited {
+  color: #4a2a0a;
+}
