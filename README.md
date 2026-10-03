@@ -8,4 +8,8 @@
 
 **- Heitor Roberto Mesquita de Souza | 236168**
 
+**-Davi de Paula Garcia | 252508**
+
+***
+
 [Site Hospedado](https://prog-web-grupo04.vercel.app/)
