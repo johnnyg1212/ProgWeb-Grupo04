@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo da Toupeira - Configurações</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styleconfigJogo.css">
+</head>
+<body>
+  <header class="barra-topo">
+    <a class="botao botao-voltar" href="menu.html">Voltar</a>
+  </header>
+
+  <main>
+    <h1>
+      <img src="img/logo-horizontal.png">
+    </h1>
+    <form class="formulario-config" action="jogo.html">
+      <fieldset>
+        <div class="cartoes">
+
+          <input type="radio" id="modo-classico" name="modo" value="classico" required>
+          <label class="cartao cartao-classico" for="modo-classico">
+            <span class="cartao-icone" aria-hidden="true">🕳️</span>
+            <span class="cartao-titulo">Clássico</span>
+            <span class="cartao-descricao">Acerte as toupeiras antes que elas se escondam.</span>
+          </label>
+
+          <input type="radio" id="modo-explosivo" name="modo" value="explosivo">
+          <label class="cartao cartao-explosivo" for="modo-explosivo">
+            <span class="cartao-icone" aria-hidden="true">💣</span>
+            <span class="cartao-titulo">Explosivo</span>
+            <span class="cartao-descricao">Cuidado: cada bomba que você acertar tira 1 ponto.</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <div class="painel">
+        <fieldset>
+          <legend>&lt; Dimensões do tabuleiro &gt;</legend>
+          <div class="dimensoes">
+            <div class="campo">
+              <label for="linhas">Linhas</label>
+              <input type="number" id="linhas" name="linhas" min="1" max="64" required>
+            </div>
+
+            <span class="separador" aria-hidden="true">&times;</span>
+
+            <div class="campo">
+              <label for="colunas">Colunas</label>
+              <input type="number" id="colunas" name="colunas" min="1" max="64" required>
+            </div>
+          </div>
+          <p class="dica">O tabuleiro deve ter entre 4 e 64 buracos no total (linhas &times; colunas).</p>
+        </fieldset>
+      </div>
+
+      <button type="submit">Começar</button>
+    </form>
+  </main>
+</body>
+</html>
