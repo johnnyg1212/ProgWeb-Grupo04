@@ -1,0 +1,102 @@
+h1 {
+  margin: 0 0 -10px;
+}
+
+.barra-topo {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 10;
+}
+
+.botao-voltar {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 10px 22px;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+.botao-voltar::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-left: 3px solid currentColor;
+  border-bottom: 3px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.botao:link,
+.botao:visited {
+  color: #4a2a0a;
+}
+
+.painel-tabela {
+  width: 900px;
+  max-width: 90vw;
+  padding: 18px 24px 24px;
+  color: #4a2a0a;
+  background-color: #fff1d0;
+  border: 4px solid #6b3e1b;
+  border-radius: 24px;
+}
+
+.painel-tabela h2 {
+  margin: 0 0 16px;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: normal;
+}
+
+/* A lista pode crescer, então a tabela rola mantendo o cabeçalho fixo */
+.tabela-rolagem {
+  max-height: 420px;
+  overflow: auto;
+  background-color: #ffffff;
+  border: 3px solid #6b3e1b;
+  border-radius: 14px;
+}
+
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.tabela caption {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.tabela th {
+  position: sticky;
+  top: 0;
+  padding: 12px 10px;
+  font-weight: bold;
+  white-space: nowrap;
+  background: linear-gradient(#ffd54a, #f5a623);
+  box-shadow: inset 0 -3px 0 #6b3e1b;
+}
+
+.tabela td {
+  padding: 8px 10px;
+}
+
+.tabela th + th,
+.tabela td + td {
+  border-left: 2px solid #6b3e1b;
+}
+
+.tabela tbody tr:nth-child(even) {
+  background-color: #fff1d0;
+}
+
+.tabela tbody tr:hover {
+  background-color: #ffe2a0;
+}

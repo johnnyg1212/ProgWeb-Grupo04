@@ -1,0 +1,186 @@
+h1 {
+  margin: 0 0 -10px;
+}
+
+.barra-topo {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 10;
+}
+
+.botao-voltar {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 10px 22px;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+.botao-voltar::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-left: 3px solid currentColor;
+  border-bottom: 3px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.botao:link,
+.botao:visited {
+  color: #4a2a0a;
+}
+
+.painel-tabela {
+  width: 900px;
+  max-width: 90vw;
+  padding: 18px 24px 24px;
+  color: #4a2a0a;
+  background-color: #fff1d0;
+  border: 4px solid #6b3e1b;
+  border-radius: 24px;
+}
+
+.cabecalho-painel {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px 24px;
+  margin-bottom: 16px;
+}
+
+.cabecalho-painel h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: normal;
+}
+
+/* Seletor de modo: os radios ficam escondidos e os labels viram botões */
+.painel-tabela > input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.filtro-modo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.3rem;
+}
+
+.filtro-modo label {
+  padding: 6px 18px;
+  font-size: 1.1rem;
+  background-color: #ffffff;
+  border: 3px solid #6b3e1b;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+.filtro-modo label:hover {
+  transform: translateY(-2px);
+}
+
+#ranking-classico:checked ~ .cabecalho-painel label[for="ranking-classico"] {
+  background: linear-gradient(#ffd54a, #f5a623);
+  box-shadow: 0 3px 0 #6b3e1b;
+}
+
+#ranking-explosivo:checked ~ .cabecalho-painel label[for="ranking-explosivo"] {
+  background: linear-gradient(#ffb070, #f08030);
+  box-shadow: 0 3px 0 #6b3e1b;
+}
+
+#ranking-classico:focus-visible ~ .cabecalho-painel label[for="ranking-classico"],
+#ranking-explosivo:focus-visible ~ .cabecalho-painel label[for="ranking-explosivo"] {
+  outline: 3px solid #6b3e1b;
+  outline-offset: 3px;
+}
+
+/* Mostra só a tabela do modo selecionado */
+.tabela-explosivo {
+  display: none;
+}
+
+#ranking-explosivo:checked ~ .tabela-rolagem .tabela-classico {
+  display: none;
+}
+
+#ranking-explosivo:checked ~ .tabela-rolagem .tabela-explosivo {
+  display: table;
+}
+
+.tabela-rolagem {
+  overflow-x: auto;
+  background-color: #ffffff;
+  border: 3px solid #6b3e1b;
+  border-radius: 14px;
+}
+
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.tabela caption {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.tabela th {
+  padding: 12px 10px;
+  font-weight: bold;
+  white-space: nowrap;
+  background: linear-gradient(#ffd54a, #f5a623);
+  border-bottom: 3px solid #6b3e1b;
+}
+
+.tabela td {
+  padding: 8px 10px;
+}
+
+.tabela th + th,
+.tabela td + td {
+  border-left: 2px solid #6b3e1b;
+}
+
+.tabela tbody tr:nth-child(even) {
+  background-color: #fff1d0;
+}
+
+.tabela tbody tr:hover {
+  background-color: #ffe2a0;
+}
+
+/* Destaque do pódio */
+.tabela tbody tr:nth-child(1) td:first-child {
+  background-color: #ffd54a;
+  font-weight: bold;
+}
+
+.tabela tbody tr:nth-child(2) td:first-child {
+  background-color: #dcdcdc;
+  font-weight: bold;
+}
+
+.tabela tbody tr:nth-child(3) td:first-child {
+  background-color: #e0a36a;
+  font-weight: bold;
+}
+
+@media (max-width: 760px) {
+  .cabecalho-painel {
+    justify-content: center;
+  }
+}
