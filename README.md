@@ -4,7 +4,7 @@ Projeto Final de **SI401 – Programação para a Web** (FT-UNICAMP, 2º semestr
 
 Plataforma online do jogo **Acerte a Toupeira** (*Whac-a-Mole*), com cadastro e login de jogadores, partidas em duas modalidades (**Clássica** e **Explosiva**), histórico de partidas e ranking global.
 
-**Site publicado:** https://prog-web-grupo04.vercel.app/
+**Site publicado:** https://prog-web-grupo04.vercel.app/ <br>
 **Entrega Parcial 1 - Link do Vídeo no Youtube:** https://www.youtube.com/watch?v=xYdes7JchXw
 
 ---
