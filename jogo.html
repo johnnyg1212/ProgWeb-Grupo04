@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo da Toupeira - Partida</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="stylejogo.css">
+</head>
+<body>
+  <!-- Desistir: volta para as configurações de jogo (fluxo de telas) -->
+  <header class="barra-topo">
+    <a class="botao botao-voltar" href="configJogo.html">Desistir</a>
+  </header>
+
+  <main>
+    <h1>
+      <img src="img/logo-horizontal.png" alt="Jogo da Toupeira">
+    </h1>
+
+    <div class="area-jogo">
+      <!-- Tabuleiro estático: nesta parcial é só a figura do jogo, sem funcionalidade -->
+      <section class="painel painel-tabuleiro" aria-labelledby="titulo-tabuleiro">
+        <h2 id="titulo-tabuleiro">&lt; Tabuleiro 4 &times; 4 &gt;</h2>
+
+        <div class="tabuleiro" role="group" aria-label="Tabuleiro de 4 por 4 buracos">
+          <div class="buraco"></div>
+          <div class="buraco"><img class="personagem" src="img/mascoto_jogo.png" alt="Toupeira" width="90" height="90"></div>
+          <div class="buraco"></div>
+          <div class="buraco"></div>
+
+          <div class="buraco"></div>
+          <div class="buraco"></div>
+          <div class="buraco"><span class="personagem bomba" role="img" aria-label="Bomba">💣</span></div>
+          <div class="buraco"></div>
+
+          <div class="buraco"></div>
+          <div class="buraco"></div>
+          <div class="buraco"></div>
+          <div class="buraco"><img class="personagem" src="img/mascoto_jogo.png" alt="Toupeira" width="90" height="90"></div>
+
+          <div class="buraco"></div>
+          <div class="buraco"></div>
+          <div class="buraco"></div>
+          <div class="buraco"></div>
+        </div>
+      </section>
+
+      <!-- Informações da partida (valores fixos de exemplo) -->
+      <section class="painel painel-status" aria-labelledby="titulo-status">
+        <h2 id="titulo-status">&lt; Partida &gt;</h2>
+
+        <dl class="status">
+          <div class="status-item">
+            <dt>Modalidade</dt>
+            <dd>Explosivo</dd>
+          </div>
+          <div class="status-item">
+            <dt>Nível</dt>
+            <dd>3</dd>
+          </div>
+          <div class="status-item">
+            <dt>Tempo restante</dt>
+            <dd>00:14</dd>
+          </div>
+          <div class="status-item">
+            <dt>Toupeiras acertadas</dt>
+            <dd>27</dd>
+          </div>
+          <div class="status-item">
+            <dt>Acertos no nível</dt>
+            <dd>70% <span class="meta">(necessário: 90%)</span></dd>
+          </div>
+        </dl>
+      </section>
+    </div>
+
+    <!-- Histórico resumido do jogador; a lista completa fica em historico.html -->
+    <section class="painel painel-tabela" aria-labelledby="titulo-historico">
+      <h2 id="titulo-historico">&lt; Suas últimas partidas &gt;</h2>
+
+      <div class="tabela-rolagem">
+        <table class="tabela">
+          <caption>Últimas partidas do jogador</caption>
+          <thead>
+            <tr>
+              <th scope="col">Jogador</th>
+              <th scope="col">Tabuleiro</th>
+              <th scope="col">Modo</th>
+              <th scope="col">Pontuação</th>
+              <th scope="col">Nível</th>
+              <th scope="col">Data/hora</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>jogador01</td><td>4 &times; 4</td><td>Clássico</td><td>42</td><td>3</td><td>04/10/2026 14:30</td></tr>
+            <tr><td>jogador01</td><td>3 &times; 3</td><td>Explosivo</td><td>18</td><td>2</td><td>04/10/2026 14:12</td></tr>
+            <tr><td>jogador01</td><td>4 &times; 4</td><td>Explosivo</td><td>7</td><td>1</td><td>04/10/2026 13:50</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="ver-mais"><a href="historico.html">Ver histórico completo</a></p>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo da Toupeira - Editar Dados</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="stylecadastro.css">
+  <link rel="stylesheet" href="styleperfil.css">
+</head>
+<body>
+  <main>
+    <h1>
+      <img src="img/logo.png" alt="Jogo da Toupeira">
+    </h1>
+
+    <div class="container">
+      <!-- Salvar e Cancelar voltam para o menu (fluxo de telas). Valores abaixo são fixos de exemplo -->
+      <form action="menu.html">
+        <div class="campo">
+          <label for="nome">&lt; Nome Completo &gt;</label>
+          <input type="text" id="nome" name="nome" value="Jogador de Exemplo" required>
+        </div>
+
+        <!-- readonly: o valor aparece e é enviado, mas não pode ser alterado -->
+        <div class="campo">
+          <label for="nascimento">&lt; Data de Nascimento &gt;</label>
+          <input type="date" id="nascimento" name="nascimento" value="2000-01-01" readonly>
+        </div>
+
+        <div class="campo">
+          <label for="cpf">&lt; CPF &gt;</label>
+          <input type="text" id="cpf" name="cpf" value="000.000.000-00" readonly>
+        </div>
+
+        <div class="campo">
+          <label for="telefone">&lt; Telefone &gt;</label>
+          <input type="tel" id="telefone" name="telefone" value="(19) 99999-9999" required>
+        </div>
+
+        <div class="campo">
+          <label for="email">&lt; Email &gt;</label>
+          <input type="email" id="email" name="email" value="jogador@exemplo.com" required>
+        </div>
+
+        <div class="campo">
+          <label for="username">&lt; Nome de Usuário &gt;</label>
+          <input type="text" id="username" name="username" value="jogador01" readonly>
+        </div>
+
+        <div class="campo">
+          <label for="senha">&lt; Nova Senha &gt;</label>
+          <input type="password" id="senha" name="senha" placeholder="Em branco para manter" autocomplete="new-password">
+        </div>
+
+        <p class="aviso-bloqueado">
+          Data de nascimento, CPF e nome de usuário não podem ser alterados.
+        </p>
+
+        <div class="acoes">
+          <button type="submit">Salvar</button>
+          <a class="botao" href="menu.html">Cancelar</a>
+        </div>
+      </form>
+    </div>
+  </main>
+</body>
+</html>

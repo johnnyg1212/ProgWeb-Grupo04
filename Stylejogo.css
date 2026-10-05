@@ -1,0 +1,263 @@
+/* Página da partida: o style.css já traz fonte, fundo, botões e cores base */
+
+h1 {
+  margin: 0 0 -10px;
+}
+
+h1 img {
+  width: 340px;
+}
+
+/* Botão "Desistir" no canto superior esquerdo (mesmo padrão das outras páginas) */
+.barra-topo {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 10;
+}
+
+.botao-voltar {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 10px 22px;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+.botao-voltar::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-left: 3px solid currentColor;
+  border-bottom: 3px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.botao:link,
+.botao:visited {
+  color: #4a2a0a;
+}
+
+/* Espaço entre o logo, a área do jogo e o histórico */
+main {
+  gap: 16px;
+  padding: 24px 0;
+}
+
+/* Tabuleiro e informações lado a lado (quebram para baixo em telas estreitas) */
+.area-jogo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 20px;
+  width: 900px;
+  max-width: 90vw;
+}
+
+.painel {
+  padding: 14px 24px 20px;
+  color: #4a2a0a;
+  background-color: #fff1d0;
+  border: 4px solid #6b3e1b;
+  border-radius: 24px;
+}
+
+.painel h2 {
+  margin: 0 0 12px;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: normal;
+}
+
+/* ---------- Tabuleiro ---------- */
+.tabuleiro {
+  display: grid;
+  grid-template-columns: repeat(4, 90px);
+  gap: 10px;
+  justify-content: center;
+  padding: 14px;
+  background-color: #9c6b3a;
+  border: 3px solid #6b3e1b;
+  border-radius: 16px;
+}
+
+.buraco {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 90px;
+  height: 90px;
+}
+
+/* O buraco em si: uma elipse escura com a borda de terra mais clara */
+.buraco::before {
+  content: "";
+  position: absolute;
+  right: 4px;
+  bottom: 6px;
+  left: 4px;
+  height: 38px;
+  background: radial-gradient(ellipse at center, #1d0e04 55%, #4a2a0a 100%);
+  border-radius: 50%;
+  box-shadow: 0 4px 0 #b98650;
+}
+
+/* Toupeira (imagem) ou bomba (emoji) aparecendo por cima do buraco */
+.personagem {
+  position: relative;
+  z-index: 1;
+  display: block;
+}
+
+.bomba {
+  align-self: center;
+  font-size: 2.6rem;
+  line-height: 1;
+}
+
+/* ---------- Informações da partida ---------- */
+.painel-status {
+  flex: 1;
+  min-width: 300px;
+}
+
+.status {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+}
+
+.status-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 8px 14px;
+  background-color: #ffffff;
+  border: 3px solid #6b3e1b;
+  border-radius: 12px;
+}
+
+.status dt {
+  font-size: 1.1rem;
+}
+
+.status dd {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-align: right;
+}
+
+.status .meta {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: normal;
+}
+
+/* ---------- Histórico resumido ---------- */
+.painel-tabela {
+  width: 900px;
+  max-width: 90vw;
+}
+
+.tabela-rolagem {
+  overflow-x: auto;
+  background-color: #ffffff;
+  border: 3px solid #6b3e1b;
+  border-radius: 14px;
+}
+
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+/* A legenda existe para leitores de tela e fica escondida na tela */
+.tabela caption {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.tabela th {
+  padding: 10px;
+  font-weight: bold;
+  white-space: nowrap;
+  background: linear-gradient(#ffd54a, #f5a623);
+  border-bottom: 3px solid #6b3e1b;
+}
+
+.tabela td {
+  padding: 8px 10px;
+}
+
+.tabela th + th,
+.tabela td + td {
+  border-left: 2px solid #6b3e1b;
+}
+
+.tabela tbody tr:nth-child(even) {
+  background-color: #fff1d0;
+}
+
+.ver-mais {
+  margin: 12px 0 0;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.ver-mais a {
+  color: #4a2a0a;
+}
+
+/* Telas estreitas (celular): tabuleiro menor e espaço para o botão Desistir */
+@media (max-width: 520px) {
+  main {
+    padding-top: 70px;
+  }
+
+  .painel {
+    padding: 12px 12px 16px;
+  }
+
+  .painel-status {
+    min-width: 0;
+  }
+
+  .tabuleiro {
+    grid-template-columns: repeat(4, 56px);
+    gap: 6px;
+    padding: 10px;
+  }
+
+  .buraco {
+    width: 56px;
+    height: 56px;
+  }
+
+  .buraco::before {
+    right: 2px;
+    bottom: 4px;
+    left: 2px;
+    height: 24px;
+  }
+
+  img.personagem {
+    width: 56px;
+    height: 56px;
+  }
+
+  .bomba {
+    font-size: 1.8rem;
+  }
+}
