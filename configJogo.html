@@ -6,6 +6,7 @@
   <title>Jogo da Toupeira - Configurações</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/styleconfigJogo.css">
+  <script src="js/configurar.js" defer></script>
 </head>
 <body>
   <header class="barra-topo">
@@ -14,7 +15,7 @@
 
   <main>
     <h1>
-      <img src="img/logo-horizontal.png">
+      <img src="img/logo-horizontal.png" alt="Jogo da Toupeira">
     </h1>
     <form class="formulario-config" action="jogo.html">
       <fieldset>
@@ -53,6 +54,7 @@
             </div>
           </div>
           <p class="dica">O tabuleiro deve ter entre 4 e 64 buracos no total (linhas &times; colunas).</p>
+          <p class="erro" id="erro-config" role="alert" hidden></p>
         </fieldset>
       </div>
 

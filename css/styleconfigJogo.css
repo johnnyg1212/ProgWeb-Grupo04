@@ -183,3 +183,13 @@ input:focus-visible + .cartao {
   padding: 18px 24px;
   font-size: 2rem;
 }
+
+.erro {
+  margin: 12px 0 0;
+  padding: 8px 12px;
+  font-size: 1rem;
+  color: #7a1c0e;
+  background-color: #ffe1db;
+  border: 3px solid #b3392a;
+  border-radius: 12px;
+}

@@ -72,51 +72,98 @@ main {
   font-weight: normal;
 }
 
-/* ---------- Tabuleiro ---------- */
+/* ---------- Tabuleiro (os buracos são criados pelo jogo.js) ---------- */
+.painel-tabuleiro {
+  min-width: 0;
+  max-width: 100%;
+}
+
 .tabuleiro {
+  --colunas: 4;
+  --tam: 90px;
   display: grid;
-  grid-template-columns: repeat(4, 90px);
+  grid-template-columns: repeat(var(--colunas), var(--tam));
   gap: 10px;
-  justify-content: center;
+  width: max-content;
+  max-width: 100%;
+  margin: 0 auto;
   padding: 14px;
+  overflow-x: auto;
   background-color: #9c6b3a;
   border: 3px solid #6b3e1b;
   border-radius: 16px;
 }
 
+/* Cada buraco é um botão; aqui some o visual padrão dos botões do site */
 .buraco {
   position: relative;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  width: 90px;
-  height: 90px;
+  display: block;
+  width: var(--tam);
+  height: var(--tam);
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  background: none;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.buraco:hover {
+  filter: none;
+}
+
+.buraco:active {
+  transform: none;
 }
 
 /* O buraco em si: uma elipse escura com a borda de terra mais clara */
 .buraco::before {
   content: "";
   position: absolute;
-  right: 4px;
-  bottom: 6px;
-  left: 4px;
-  height: 38px;
+  right: 5%;
+  bottom: 7%;
+  left: 5%;
+  height: 42%;
   background: radial-gradient(ellipse at center, #1d0e04 55%, #4a2a0a 100%);
   border-radius: 50%;
   box-shadow: 0 4px 0 #b98650;
 }
 
-/* Toupeira (imagem) ou bomba (emoji) aparecendo por cima do buraco */
-.personagem {
-  position: relative;
+/* Toupeira e bomba aparecem por cima do buraco quando o jogo liga a classe */
+.buraco.tem-toupeira::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   z-index: 1;
-  display: block;
+  background: url("../img/mascoto_jogo.png") center / contain no-repeat;
 }
 
-.bomba {
-  align-self: center;
-  font-size: 2.6rem;
+.buraco.tem-bomba::after {
+  content: "\1F4A3";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(var(--tam) * 0.6);
   line-height: 1;
+}
+
+/* Retorno visual rápido: verde quando acerta, vermelho quando clica na bomba */
+.buraco.acerto::before {
+  box-shadow: 0 0 0 4px #7ed957, 0 4px 0 #b98650;
+}
+
+.buraco.erro-bomba::before {
+  box-shadow: 0 0 0 4px #e04b3a, 0 4px 0 #b98650;
 }
 
 /* ---------- Informações da partida ---------- */
@@ -160,14 +207,22 @@ main {
   font-weight: normal;
 }
 
-/* ---------- Histórico resumido ---------- */
+.aviso {
+  margin: 12px 0 0;
+  min-height: 2.8em;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+/* ---------- Histórico das partidas ---------- */
 .painel-tabela {
   width: 900px;
   max-width: 90vw;
 }
 
 .tabela-rolagem {
-  overflow-x: auto;
+  max-height: 260px;
+  overflow: auto;
   background-color: #ffffff;
   border: 3px solid #6b3e1b;
   border-radius: 14px;
@@ -190,11 +245,13 @@ main {
 }
 
 .tabela th {
+  position: sticky;
+  top: 0;
   padding: 10px;
   font-weight: bold;
   white-space: nowrap;
   background: linear-gradient(#ffd54a, #f5a623);
-  border-bottom: 3px solid #6b3e1b;
+  box-shadow: inset 0 -3px 0 #6b3e1b;
 }
 
 .tabela td {
@@ -220,7 +277,48 @@ main {
   color: #4a2a0a;
 }
 
-/* Telas estreitas (celular): tabuleiro menor e espaço para o botão Desistir */
+/* ---------- Janela de fim de partida ---------- */
+.dialogo-fim {
+  max-width: 90vw;
+  padding: 24px 32px;
+  text-align: center;
+  color: #4a2a0a;
+  background-color: #fff1d0;
+  border: 4px solid #6b3e1b;
+  border-radius: 24px;
+}
+
+.dialogo-fim::backdrop {
+  background-color: rgba(0, 0, 0, 0.55);
+}
+
+.dialogo-fim h2 {
+  margin: 0 0 8px;
+  font-size: 2rem;
+  font-weight: normal;
+}
+
+.dialogo-fim p {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.dialogo-botoes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.dialogo-botoes button,
+.dialogo-botoes .botao {
+  margin: 0;
+  font-size: 1.3rem;
+  text-decoration: none;
+}
+
+/* Telas estreitas (celular): espaço para o botão Desistir */
 @media (max-width: 520px) {
   main {
     padding-top: 70px;
@@ -232,32 +330,5 @@ main {
 
   .painel-status {
     min-width: 0;
-  }
-
-  .tabuleiro {
-    grid-template-columns: repeat(4, 56px);
-    gap: 6px;
-    padding: 10px;
-  }
-
-  .buraco {
-    width: 56px;
-    height: 56px;
-  }
-
-  .buraco::before {
-    right: 2px;
-    bottom: 4px;
-    left: 2px;
-    height: 24px;
-  }
-
-  img.personagem {
-    width: 56px;
-    height: 56px;
-  }
-
-  .bomba {
-    font-size: 1.8rem;
   }
 }
