@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Matcha';
-    src: url('font/Matcha.ttf') format('truetype');
+    src: url('../font/Matcha.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -11,7 +11,7 @@
  
 body {
     font-family: 'Matcha', sans-serif;
-    background-image: url('img/background_logo2.png');
+    background-image: url('../img/background_logo2.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
