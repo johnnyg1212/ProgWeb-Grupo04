@@ -7,7 +7,7 @@ Plataforma online do jogo **Acerte a Toupeira** (*Whac-a-Mole*), com cadastro e 
 **Site publicado:** https://prog-web-grupo04.vercel.app/ <br>
 **Parcial 1 - vídeo no YouTube:** https://www.youtube.com/watch?v=xYdes7JchXw <br>
 **Parcial 2 - vídeo no YouTube:** https://youtu.be/QOVDdj5rpsw
-[sada](https://youtu.be/QOVDdj5rpsw)
+[sada]()
 
 ---
 
