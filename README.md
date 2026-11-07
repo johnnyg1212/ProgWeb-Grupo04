@@ -14,11 +14,11 @@ Plataforma online do jogo **Acerte a Toupeira** (*Whac-a-Mole*), com cadastro e 
 
 | Integrante | RA | Parcial 1 | Parcial 2 |
 |---|---|---|---|
-| João Guilherme Fernandes Frota | 222968 | Criação do repositório e administração do grupo; fluxo de telas e protótipo no Figma; telas de configurações do jogo, partida e edição de dados; testes e validação | [preencher] |
-| Heitor Roberto Mesquita de Souza | 236168 | Diagramação do fluxo de telas e protótipo no Figma; telas de login, cadastro e menu | [preencher] |
-| Cicero Eduardo Campos Leite dos Santos | 250984 | Apoio na organização do desenvolvimento; telas de histórico e ranking | [preencher] |
-| Davi de Paula Garcia | 252508 | Revisão dos códigos e README | [preencher] |
-| Henrique Carvalho De Mello | 241120 | README | [preencher] |
+| João Guilherme Fernandes Frota | 222968 | Criação do repositório e administração do grupo; fluxo de telas e protótipo no Figma; telas de configurações do jogo, partida e edição de dados; testes e validação | Desenvolvimento do jogo.js (regras e dificuldade, tabuleiro, cliques, timers, níveis, fim de partida e histórico), com apoio de IA generativa na escrita do código; CSS do tabuleiro e da página da partida; testes (automáticos, manuais e validação W3C); GitHub e Vercel. |
+| Heitor Roberto Mesquita de Souza | 236168 | Diagramação do fluxo de telas e protótipo no Figma; telas de login, cadastro e menu | Páginas jogo.html e configJogo.html (contêiner do tabuleiro, painel da partida, tabela de histórico, janela de fim e área de erro) e alt dos logos; validação do formulário de configuração (configurar.js), com Cicero e Henrique; testes manuais do jogo. |
+| Cicero Eduardo Campos Leite dos Santos | 250984 | Apoio na organização do desenvolvimento; telas de histórico e ranking |CSS da janela de fim de partida e da mensagem de erro da configuração; validação do formulário de configuração (configurar.js), com Heitor e Henrique; testes manuais do jogo. |
+| Davi de Paula Garcia | 252508 | Revisão dos códigos e README |Documentação do projeto: atualização do README da Parcial 2.|
+| Henrique Carvalho De Mello | 241120 | README | CSS dos ajustes da página da partida para celular; validação do formulário de configuração (configurar.js), com Heitor e Cicero; testes manuais do jogo. |
 
 ---
 
