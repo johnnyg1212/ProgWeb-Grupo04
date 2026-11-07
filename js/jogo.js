@@ -1,4 +1,4 @@
-// jogo.html: toda a dinâmica do Acerte a Toupeira.
+// jogo.html: toda a dinâmica do Acerte a Toupeira.   
 // Funciona só no navegador: não há back-end nem armazenamento de dados.
 (function () {
   "use strict";
