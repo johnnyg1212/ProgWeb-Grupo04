@@ -7,7 +7,7 @@
      1. REGRAS DO JOGO (para mudar a dificuldade, mexa só aqui)
      ===================================================================== */
   var DURACAO_NIVEL_MS = 20000;       // duração t de cada nível
-  var ACERTO_MIN_INICIAL = 70;        // % de acerto exigido no nível 1
+  var ACERTO_MIN_INICIO = 70;        // % de acerto exigido no nível 1
   var ACERTO_MIN_PASSO = 2;           // a exigência sobe 2 pontos por nível
   var ACERTO_MIN_LIMITE = 90;         // e nunca passa de 90%
   var TEMPO_ALVO_INICIAL_MS = 1500;   // tempo visível (tt) no nível 1
@@ -74,7 +74,7 @@
   }
 
   function acertoNecessario(nivel) {
-    return Math.min(ACERTO_MIN_LIMITE, ACERTO_MIN_INICIAL + ACERTO_MIN_PASSO * (nivel - 1));
+    return Math.min(ACERTO_MIN_LIMITE, ACERTO_MIN_INICIO + ACERTO_MIN_PASSO * (nivel - 1));
   }
 
   // (toupeiras acertadas - bombas clicadas) / toupeiras exibidas, em %
