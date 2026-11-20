@@ -12,12 +12,12 @@ Plataforma online do jogo **Acerte a Toupeira** (*Whac-a-Mole*), com cadastro e 
 
 ## 👥 Grupo 04
 
-| Integrante | RA | Parcial 1 | Parcial 2 | | Parcial 3 | 
-|---|---|---|---|
+| Integrante | RA | Parcial 1 | Parcial 2 | Parcial 3 |
+|---|---|---|---|---|
 | João Guilherme Fernandes Frota | 222968 | Criação do repositório e administração do grupo; fluxo de telas e protótipo no Figma; telas de configurações do jogo, partida e edição de dados; testes e validação | Desenvolvimento do jogo.js (regras e dificuldade, tabuleiro, cliques, timers, níveis, fim de partida e histórico), com apoio de IA generativa na escrita do código; CSS do tabuleiro e da página da partida; testes (automáticos, manuais e validação W3C); GitHub e Vercel. | Conferir o modelo das tabelas e a consulta do ranking (um jogador por linha), testando com mais usuários |
 | Heitor Roberto Mesquita de Souza | 236168 | Diagramação do fluxo de telas e protótipo no Figma; telas de login, cadastro e menu | Páginas jogo.html e configJogo.html (contêiner do tabuleiro, painel da partida, tabela de histórico, janela de fim e área de erro) e alt dos logos; validação do formulário de configuração (configurar.js), com Cicero e Henrique; testes manuais do jogo. | Testar todas as validações (CPF, e-mail e usuário repetidos, campos bloqueados) e registrar os resultados |
-| Cicero Eduardo Campos Leite dos Santos | 250984 | Apoio na organização do desenvolvimento; telas de histórico e ranking |CSS da janela de fim de partida e da mensagem de erro da configuração; validação do formulário de configuração (configurar.js), com Heitor e Henrique; testes manuais do jogo. | Estudar o fluxo completo (hash de senha, sessão, token CSRF) e ser o contato para dúvidas técnicas do grupo e atualizar o que cada um fez no README | 
-| Davi de Paula Garcia | 252508 | Revisão dos códigos e README |Documentação do projeto: atualização do README da Parcial 2.| Testar o fluxo entre telas, a proteção das páginas sem login e o botão Desistir |
+| Cicero Eduardo Campos Leite dos Santos | 250984 | Apoio na organização do desenvolvimento; telas de histórico e ranking | CSS da janela de fim de partida e da mensagem de erro da configuração; validação do formulário de configuração (configurar.js), com Heitor e Henrique; testes manuais do jogo. | Estudar o fluxo completo (hash de senha, sessão, token CSRF) e ser o contato para dúvidas técnicas do grupo e atualizar o que cada um fez no README |
+| Davi de Paula Garcia | 252508 | Revisão dos códigos e README | Documentação do projeto: atualização do README da Parcial 2. | Testar o fluxo entre telas, a proteção das páginas sem login e o botão Desistir |
 | Henrique Carvalho De Mello | 241120 | README | CSS dos ajustes da página da partida para celular; validação do formulário de configuração (configurar.js), com Heitor e Cicero; testes manuais do jogo. | Rodar os validadores nas páginas |
 
 ---
@@ -32,6 +32,7 @@ Plataforma online do jogo **Acerte a Toupeira** (*Whac-a-Mole*), com cadastro e 
 
 > **Parcial 2:** o jogo funciona por completo no navegador, mas **não há controle de acesso nem armazenamento de dados**. O histórico da página do jogo fica apenas na memória e some ao recarregar ou sair da página. As páginas de login, cadastro, ranking, histórico completo e edição de dados continuam com valores fixos de exemplo até a Parcial 3.
 
+> **Parcial 3:** o jogo agora tem **controle de acesso e armazenamento de dados**. Para jogar é preciso se **cadastrar** e fazer **login**; só as páginas de login e cadastro são abertas a quem não entrou. As páginas de menu, configurações, partida, histórico, ranking e edição de dados exigem usuário logado e levam de volta ao login quando ele não existe ou saiu da conta. Os usuários e as partidas ficam salvos em um **banco de dados MySQL/MariaDB**: ao terminar ou desistir de uma partida, o resultado é enviado ao servidor e gravado, e **não some mais** ao recarregar ou sair da página. O **histórico completo** mostra as partidas do jogador logado, e o **ranking global** mostra o top 10 de cada modalidade, com a melhor partida de cada jogador. A tabela "Suas partidas" da página do jogo continua mostrando só as partidas jogadas naquela visita. A **edição de dados** permite alterar nome, telefone, e-mail e senha; CPF, data de nascimento e nome de usuário não mudam.
 ---
 
 ## 🎮 Como o jogo funciona
