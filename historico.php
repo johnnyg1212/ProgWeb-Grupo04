@@ -1,5 +1,17 @@
+<?php
+require_once __DIR__ . '/includes/funcoes.php';
+$usuario = exigir_login();
+
+$consulta = db()->prepare(
+    'SELECT modo, linhas, colunas, pontuacao, nivel, jogada_em
+     FROM partidas WHERE usuario_id = ?
+     ORDER BY jogada_em DESC, id DESC LIMIT 200'
+);
+$consulta->execute([$usuario['id']]);
+$partidas = $consulta->fetchAll();
+?>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +21,7 @@
 </head>
 <body>
   <header class="barra-topo">
-    <a class="botao botao-voltar" href="menu.html">Voltar</a>
+    <a class="botao botao-voltar" href="menu.php">Voltar</a>
   </header>
 
   <main>
@@ -34,14 +46,19 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-            <tr><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-            <tr><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-            <tr><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-            <tr><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-            <tr><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-            <tr><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-            <tr><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+<?php if (!$partidas): ?>
+            <tr><td colspan="6">Nenhuma partida registrada ainda.</td></tr>
+<?php endif; ?>
+<?php foreach ($partidas as $p): ?>
+            <tr>
+              <td><?= h($usuario['username']) ?></td>
+              <td><?= (int) $p['linhas'] ?> &times; <?= (int) $p['colunas'] ?></td>
+              <td><?= h(nome_modo($p['modo'])) ?></td>
+              <td><?= (int) $p['pontuacao'] ?></td>
+              <td><?= (int) $p['nivel'] ?></td>
+              <td><?= h(formatar_data_hora($p['jogada_em'])) ?></td>
+            </tr>
+<?php endforeach; ?>
           </tbody>
         </table>
       </div>

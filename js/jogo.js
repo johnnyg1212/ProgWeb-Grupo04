@@ -1,5 +1,5 @@
-// jogo.html: toda a dinâmica do Acerte a Toupeira.   
-// Funciona só no navegador: não há back-end nem armazenamento de dados.
+// jogo.php: toda a dinâmica do Acerte a Toupeira.   
+// O resultado de cada partida é enviado ao servidor (salvar_partida.php) e gravado no banco.
 (function () {
   "use strict";
 
@@ -23,7 +23,7 @@
   var TAMANHO_BURACO_MIN = 36;        // px
   var TAMANHO_BURACO_MAX = 90;        // px
   var ESPACO_ENTRE_BURACOS = 10;      // px (igual ao gap do CSS)
-  var NOME_JOGADOR = "Visitante";     // sem login nesta parcial
+  var URL_SALVAR = "salvar_partida.php";
 
   /* =====================================================================
      2. ELEMENTOS DA PÁGINA
@@ -43,6 +43,9 @@
   var elResumoFim = document.getElementById("resumo-fim");
   var elBotaoNovo = document.getElementById("botao-novo");
   var elDesistir = document.getElementById("botao-desistir");
+  var elPrincipal = document.querySelector("main");
+  var nomeJogador = elPrincipal.dataset.jogador;   // vem do PHP (usuário logado)
+  var tokenCsrf = elPrincipal.dataset.csrf;        // token para gravar a partida
 
   /* =====================================================================
      3. ESTADO DO JOGO
@@ -106,7 +109,7 @@
   }
 
   /* =====================================================================
-     5. CONFIGURAÇÃO (lida da URL: jogo.html?modo=...&linhas=...&colunas=...)
+     5. CONFIGURAÇÃO (lida da URL: jogo.php?modo=...&linhas=...&colunas=...)
      ===================================================================== */
   function lerConfiguracao() {
     var parametros = new URLSearchParams(window.location.search);
@@ -418,7 +421,7 @@
     estado.partidaRegistrada = true;
 
     var partida = {
-      jogador: NOME_JOGADOR,
+      jogador: nomeJogador,
       linhas: config.linhas,
       colunas: config.colunas,
       modalidade: textoModalidade(),
@@ -428,6 +431,31 @@
     };
     historico.unshift(partida);
     desenharHistorico();
+    salvarNoServidor(partida);
+  }
+
+  // Envia o resultado para o PHP gravar no banco. "keepalive" garante o envio
+  // mesmo quando o clique em "Desistir" já está trocando de página.
+  function salvarNoServidor(partida) {
+    fetch(URL_SALVAR, {
+      method: "POST",
+      keepalive: true,
+      credentials: "same-origin",
+      headers: { "Content-Type": "application/json", "X-CSRF-Token": tokenCsrf },
+      body: JSON.stringify({
+        modo: config.modo,
+        linhas: partida.linhas,
+        colunas: partida.colunas,
+        pontuacao: partida.pontuacao,
+        nivel: partida.nivel
+      })
+    }).then(function (resposta) {
+      if (!resposta.ok) {
+        avisar("Não foi possível salvar a partida no servidor.");
+      }
+    }).catch(function () {
+      avisar("Não foi possível salvar a partida no servidor.");
+    });
   }
 
   function criarLinhaHistorico(partida) {
@@ -486,7 +514,7 @@
   config = lerConfiguracao();
   if (config === null) {
     // Endereço sem configurações válidas: volta para a tela de configuração.
-    window.location.replace("configJogo.html");
+    window.location.replace("configJogo.php");
   } else {
     var imagemToupeira = new Image();   // carrega a imagem antes da primeira aparição
     imagemToupeira.src = "img/mascoto_jogo.png";

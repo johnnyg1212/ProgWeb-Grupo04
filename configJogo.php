@@ -1,5 +1,9 @@
+<?php
+require_once __DIR__ . '/includes/funcoes.php';
+exigir_login();
+?>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,14 +14,14 @@
 </head>
 <body>
   <header class="barra-topo">
-    <a class="botao botao-voltar" href="menu.html">Voltar</a>
+    <a class="botao botao-voltar" href="menu.php">Voltar</a>
   </header>
 
   <main>
     <h1>
       <img src="img/logo-horizontal.png" alt="Jogo da Toupeira">
     </h1>
-    <form class="formulario-config" action="jogo.html">
+    <form class="formulario-config" action="jogo.php" method="get">
       <fieldset>
         <div class="cartoes">
 

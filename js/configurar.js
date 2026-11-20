@@ -1,4 +1,4 @@
-// configJogo.html: confere o tamanho do tabuleiro antes de abrir a partida.
+// configJogo.php: confere o tamanho do tabuleiro antes de abrir a partida.
 (function () {
   "use strict";
 

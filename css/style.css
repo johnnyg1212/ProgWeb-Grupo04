@@ -46,7 +46,7 @@ main {
     flex-direction: column;
     align-items: center;
     width: 380px;
-    height: 420px;
+    min-height: 420px;
     padding: 75px 28px 24px;
     background-color: #FFF1D0;
     border: 4px solid #6B3E1B;
@@ -122,4 +122,45 @@ button:focus-visible, .botao:focus-visible,
 
 .link-cadastro a {
     color: #4A2A0A;
+}
+
+/* Mensagens do servidor (erros de validação e avisos de sucesso) */
+.mensagem-erro,
+.mensagem-sucesso {
+    width: 100%;
+    margin: 0 0 14px;
+    padding: 8px 12px;
+    font-size: 1rem;
+    text-align: left;
+    border-radius: 12px;
+}
+
+.mensagem-erro {
+    color: #7a1c0e;
+    background-color: #ffe1db;
+    border: 3px solid #b3392a;
+}
+
+.mensagem-sucesso {
+    color: #1f4d1a;
+    background-color: #e0f5d8;
+    border: 3px solid #3f8a35;
+}
+
+.mensagem-erro ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+/* Aviso solto na página (ex.: "Dados atualizados" no menu): fixo no topo */
+main > .mensagem-sucesso,
+main > .mensagem-erro {
+    position: fixed;
+    top: 16px;
+    left: 50%;
+    z-index: 20;
+    width: auto;
+    max-width: 90vw;
+    margin: 0;
+    transform: translateX(-50%);
 }

@@ -1,3 +1,18 @@
+<?php
+require_once __DIR__ . '/includes/funcoes.php';
+$usuario = exigir_login();
+
+// Configurações vindas de configJogo.php (GET), validadas também no servidor
+$modo = $_GET['modo'] ?? '';
+$linhas = filter_var($_GET['linhas'] ?? null, FILTER_VALIDATE_INT);
+$colunas = filter_var($_GET['colunas'] ?? null, FILTER_VALIDATE_INT);
+
+if (!in_array($modo, ['classico', 'explosivo'], true)
+    || $linhas === false || $colunas === false
+    || !tabuleiro_valido($linhas, $colunas)) {
+    redirecionar('configJogo.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -11,10 +26,10 @@
 <body>
   <!-- Desistir: registra a partida e volta para as configurações (fluxo de telas) -->
   <header class="barra-topo">
-    <a class="botao botao-voltar" id="botao-desistir" href="configJogo.html">Desistir</a>
+    <a class="botao botao-voltar" id="botao-desistir" href="configJogo.php">Desistir</a>
   </header>
 
-  <main>
+  <main data-jogador="<?= h($usuario['username']) ?>" data-csrf="<?= h(token_csrf()) ?>">
     <h1>
       <img src="img/logo-horizontal.png" alt="Jogo da Toupeira">
     </h1>
@@ -60,7 +75,7 @@
       </section>
     </div>
 
-    <!-- Histórico das partidas disputadas nesta página (fica só na memória, sem armazenamento) -->
+    <!-- Partidas disputadas nesta página (a lista completa fica salva no banco: ver histórico) -->
     <section class="painel painel-tabela" aria-labelledby="titulo-historico">
       <h2 id="titulo-historico">&lt; Suas partidas &gt;</h2>
 
@@ -83,7 +98,7 @@
         </table>
       </div>
 
-      <p class="ver-mais"><a href="historico.html">Ver histórico completo</a></p>
+      <p class="ver-mais"><a href="historico.php">Ver histórico completo</a></p>
     </section>
   </main>
 
@@ -93,7 +108,7 @@
     <p id="resumo-fim"></p>
     <div class="dialogo-botoes">
       <button type="button" id="botao-novo">Jogar de novo</button>
-      <a class="botao" href="menu.html">Voltar ao menu</a>
+      <a class="botao" href="menu.php">Voltar ao menu</a>
     </div>
   </dialog>
 </body>
